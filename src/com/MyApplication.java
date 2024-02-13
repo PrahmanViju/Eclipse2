@@ -60,7 +60,7 @@ public class MyApplication {
         System.out.println("Enter the student id");
 
         int id = scanner.nextInt();
-        String response = controller.getUser(id);
+        String response = controller.getstudent(id);
         System.out.println(response);
     }
 
@@ -72,7 +72,7 @@ public class MyApplication {
         System.out.println("Please enter the class");
         String gender = scanner.next();
 
-        String response = controller.createUser(name, surname, class);
+        String response = controller.createUser(name, surname, class1);
         System.out.println(response);
     }
 

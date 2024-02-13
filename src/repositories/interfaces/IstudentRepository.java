@@ -1,14 +1,17 @@
 package repositories.interfaces;
 //package repositories.interfaces;
 
-import com.models.User;
+import com.models.Student;
 
 import java.util.List;
 
 public interface studentRepository {
-    boolean createstudent(Student student;
-    User getUser(int id);
-    List<User> getAllstudent);
+    default boolean createstudent(Student student {
+        return false;
+    }
+
+    Student getstudent(int id);
+    List<Student> getAllstudent);
 }
 
 

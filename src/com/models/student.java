@@ -1,24 +1,38 @@
 package com.models;
 
-public class User {
+import static java.lang.String.*;
+
+public class Student {
     private int id;
     private String name;
     private String surname;
     private boolean class1;
-
-    public Student() {
+//Create a Student class with attributes id ,name ,surname.class1
+    public Student(int id, String name, String surname, boolean class1) {
 
     }
 
-    public Student(String name, String surname, boolean gender) {
+    public Student(String name, String name1, String surname) {
+
+    }
+
+
+    public void Student() {
+
+    }
+
+    public void Student(String name, String surname, boolean class1) {
         setName(name);
         setSurname(surname);
-        setGender(class1);
+        setClass(class1);
     }
 
-    public Student(int id, String name, String surname, boolean gender) {
-        this(name, surname, class1);
+    public void Student(int id, String name, String surname, boolean class1) {
+        this(name, valueOf(class1), surname);
         setId(id);
+    }
+
+    public void Student(String name, String surname, String class1) {
     }
 
     public int getId() {
@@ -45,6 +59,7 @@ public class User {
         this.surname = surname;
     }
 
+    @Override
     public boolean getClass() {
         return class1;
     }
@@ -53,13 +68,15 @@ public class User {
         this.class1 = class1;
     }
 
+
+    //Make an output of id,name ,surname,class
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", gender=" + (class1 ? "Male" : "Female") +
+                ", class=" + (class1 ? "SE-2311" : "IT-2301" ) +
                 '}';
     }
 }

@@ -2,7 +2,7 @@ package repositories;
 
 
 import com.data.interfaces.IDB;
-import com.models.User;
+import com.models.Student;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -16,7 +16,7 @@ public class studentRepository implements IstudentRepository {
     }
 
     @Override
-    public boolean createstudent(User user) {
+    public boolean createstudent(Student student) {
         Connection con = null;
 
         try {
@@ -24,9 +24,9 @@ public class studentRepository implements IstudentRepository {
             String sql = "INSERT INTO users(name,surname,gender) VALUES (?,?,?)";
             PreparedStatement st = con.prepareStatement(sql);
 
-            st.setString(1, user.getName());
-            st.setString(2, user.getSurname());
-            st.setBoolean(3, user.getClass());
+            st.setString(1, student.getName());
+            st.setString(2, student.getSurname());
+            st.setBoolean(3, student.getClass());
 
             st.execute();
 
@@ -45,8 +45,8 @@ public class studentRepository implements IstudentRepository {
         return false;
     }
 
-    @Override
-    public User getstudent(int id) {
+    public Student studentRepository(int id, IDB db) {
+        this.db = db;
         Connection con = null;
 
         try {
@@ -78,7 +78,7 @@ public class studentRepository implements IstudentRepository {
     }
 
     @Override
-    public List<User> getAllstudents() {
+    public List<Student> getAllstudents() {
         Connection con = null;
 
         try {
@@ -87,14 +87,14 @@ public class studentRepository implements IstudentRepository {
             Statement st = con.createStatement();
 
             ResultSet rs = st.executeQuery(sql);
-            List<User> users = new LinkedList<>();
+            List<Student> users = new LinkedList<>();
             while (rs.next()) {
-                User user = new User(rs.getInt("id"),
+                Student student = new Student(rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("surname"),
                         rs.getBoolean("class"));
 
-                users.add(user);
+                users.add(student);
             }
 
             return users;
@@ -103,7 +103,7 @@ public class studentRepository implements IstudentRepository {
         } finally {
             try {
                 if (con != null)
-                    con.close();
+                      con.close();
             } catch (SQLException e) {
                 System.out.println("sql error: " + e.getMessage());
             }

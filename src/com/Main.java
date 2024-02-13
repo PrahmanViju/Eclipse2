@@ -1,6 +1,6 @@
 package com;
 
-import com.controllers.UserController;
+import com.controllers.studentController;
 import com.data.PostgresDB;
 import com.data.interfaces.IDB;
 import repositories.studentRepository;
